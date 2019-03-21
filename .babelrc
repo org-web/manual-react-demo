@@ -1,20 +1,26 @@
 {
-    "presets": [
-        "@babel/preset-env",
-        "@babel/preset-react"
+  "presets": ["@babel/preset-env", "@babel/preset-react"],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-syntax-dynamic-import",
+    // `style: true` 会加载 less 文件
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": "css",
+        "libraryDirectory": "lib"
+      },
+      "ant"
     ],
-    "plugins": [
-        "@babel/plugin-proposal-class-properties",
-        // `style: true` 会加载 less 文件
-        ["import", {
-            "libraryName": "antd",
-            "style": "css",
-            "libraryDirectory": "lib"
-        }, "ant"],
-        ["import", {
-            "libraryName": "antd-mobile",
-            "style": "css",
-            "libraryDirectory": "lib"
-        }, "antd-mobile"]
+    [
+      "import",
+      {
+        "libraryName": "antd-mobile",
+        "style": "css",
+        "libraryDirectory": "lib"
+      },
+      "antd-mobile"
     ]
+  ]
 }

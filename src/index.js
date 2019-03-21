@@ -1,8 +1,18 @@
 import React, { Component } from "react";
 import ReactDom from "react-dom";
-import { Button } from "antd-mobile";
+import { HashRouter as Router, Route } from "react-router-dom";
 
-import "./assets/style.scss";
+// import Home from "./components/home";
+// import RenderProps from "./components/renderProps";
+import Header from "./components/header";
+import asyncComponent from "./components/asyncComponent";
+
+const Home = asyncComponent(() => {
+  return import("./components/home");
+});
+const RenderProps = asyncComponent(() => {
+  return import("./components/renderProps");
+});
 
 class App extends Component {
   constructor(props) {
@@ -11,10 +21,14 @@ class App extends Component {
   }
   render() {
     return (
-      <div>
-        <p className="red"> Hello World! </p>
-        <Button> Start</Button>
-      </div>
+      <Router>
+        <Header />
+        <div>
+          <Route exact path="/" component={Home} />
+          <Route path="/home" component={Home} />
+          <Route path="/renderProps" component={RenderProps} />
+        </div>
+      </Router>
     );
   }
 }
