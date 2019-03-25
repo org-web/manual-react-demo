@@ -5,7 +5,7 @@ class RenderProps extends Component {
     return (
       <div>
         <h1>RenderProps</h1>
-        {this.props.children}
+        {/* {this.props.children} */}
       </div>
     );
   }

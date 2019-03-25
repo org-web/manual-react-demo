@@ -5,7 +5,7 @@ class Home extends Component {
     return (
       <div>
         <h1>首页</h1>
-        {this.props.children}
+        {/* {this.props.children} */}
       </div>
     );
   }
