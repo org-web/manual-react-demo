@@ -7,7 +7,7 @@ export default class HomeLayout extends PureComponent {
   render() {
     return (
       <div style={{ backgroundColor: "#ccc", minHeight: window.innerHeight }}>
-        <h1>HomeLayout</h1>
+        {/* <h1>HomeLayout</h1> */}
         {this.props.children}
       </div>
     );

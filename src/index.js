@@ -1,13 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import ReactDom from "react-dom";
-import { HashRouter as Router, Route, hashHistory } from "react-router-dom";
+import { HashRouter as Router, Route } from "react-router-dom";
 import { LocaleProvider } from "antd-mobile";
 
-import BasicLayout from "./lay/BasicLayout";
-import ScrollToTop from "./ScrollToTop.jsx";
+import BasicLayout from "./layouts/BasicLayout";
+// import ScrollToTop from "./ScrollToTop.jsx";
+// import { createHistory } from "history";
+
+// import createHistory from "history/createHashHistory";
 // import Home from "./components/home";
 // import RenderProps from "./components/renderProps";
-import Header from "./components/header";
+// import Header from "./components/header";
 // import asyncComponent from "./components/asyncComponent";
 
 // const Home = asyncComponent(() => {
@@ -42,20 +45,21 @@ import Header from "./components/header";
 // export default App;
 // ReactDom.render(<App />, document.getElementById("root"));
 
-function init() {
-  ReactDom.render(
-    <LocaleProvider>
-      <Router history={hashHistory}>
-        <ScrollToTop>
-          {/* <Header /> */}
-          <div>
-            <Route path="/" component={BasicLayout} />
-          </div>
-        </ScrollToTop>
-      </Router>
-    </LocaleProvider>,
-    document.getElementById("root")
-  );
-}
+// const history = createHistory();
+// function init() {
+ReactDom.render(
+  <LocaleProvider>
+    <Router>
+      {/* <ScrollToTop> */}
+      {/* <Header /> */}
+      <div>
+        <Route path="/" component={BasicLayout} />
+      </div>
+      {/* </ScrollToTop> */}
+    </Router>
+  </LocaleProvider>,
+  document.getElementById("root")
+);
+// }
 
-init();
+// init();

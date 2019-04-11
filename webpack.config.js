@@ -2,7 +2,7 @@ const path = require("path");
 const webpack = require("webpack");
 const HtmlPlugin = require("html-webpack-plugin"); // 自动创建html文件
 const CleanWebpackPlugin = require("clean-webpack-plugin"); // 清除无用文件
-const ExtractTextPlugin = require("extract-text-webpack-plugin"); // 分离文件
+// const ExtractTextPlugin = require("extract-text-webpack-plugin"); // 分离文件
 
 module.exports = {
   devtool: "inline-source-map", // 用于开发调试，方便清楚是那个文件出错 (共有7种)
@@ -16,19 +16,25 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader"
-        })
+        test: /\.(js|jsx)$/,
+        use: ["babel-loader"],
+        exclude: /node_modules/
       },
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract({
-          fallback: "style-loader",
-          use: "css-loader!sass-loader"
-        })
+        test: /\.css$/,
+        // use: ExtractTextPlugin.extract({
+        //   fallback: "style-loader",
+        //   use: "css-loader"
+        // })
+        use: [{ loader: "style-loader" }, { loader: "css-loader" }]
       },
+      // {
+      //   test: /\.scss$/,
+      //   loader: ExtractTextPlugin.extract({
+      //     fallback: "style-loader",
+      //     use: "css-loader!sass-loader"
+      //   })
+      // },
       {
         test: /\.(png|svg|jpg|gif)$/,
         loader: "url-loader",
@@ -36,11 +42,6 @@ module.exports = {
           limit: 10000,
           name: "img/[name].[hash:7].[ext]"
         }
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: "babel-loader",
-        exclude: /node_modules/
       }
     ]
   },
@@ -65,7 +66,7 @@ module.exports = {
     new HtmlPlugin({
       template: "src/index.html",
       inject: "body"
-    }),
-    new ExtractTextPlugin("styles.css")
+    })
+    // new ExtractTextPlugin("styles.css")
   ]
 };

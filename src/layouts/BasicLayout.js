@@ -13,7 +13,7 @@ export default class BasicLayout extends PureComponent {
     return (
       <div style={{ minHeight: window.innerHeight }}>
         <Switch>
-          {routes.map(route => {
+          {routes.map(route => (
             <Route
               exact
               path={route.path}
@@ -31,8 +31,8 @@ export default class BasicLayout extends PureComponent {
                   );
                 }
               }}
-            />;
-          })}
+            />
+          ))}
         </Switch>
       </div>
     );
